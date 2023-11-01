@@ -50,3 +50,28 @@ for crust in crusts_pizza:
         crusts_pizza[crust][size] = {"extra_cheese": cheese_price, "price": crust_price}
 for topping in toppings_pizza:
     pizzas[topping] = crusts_pizza
+
+for i, pizza in enumerate(pizzas):
+    print(f"{i+1}. {pizza}")
+topping_pizza = toppings_pizza[int(input("Pilih Topping Pizza: ")) - 1]
+print()
+for i, crust in enumerate(crusts_pizza):
+    print(f"{i+1}. {crust}")
+crust_pizza = [*crusts_pizza.keys()][int(input("Pilih Crust/Tepian Pizza: ")) - 1]
+print()
+for i, size in enumerate(extra_cheese):
+    print(f"{i+1}. {size}")
+size_pizza = [*extra_cheese.keys()][int(input("Pilih Ukuran Pizza: ")) - 1]
+print()
+extra_cheese = True if input("Pakai Tambahan Keju (y/n): ").lower() == "y" else False
+
+pizza = pizzas[topping_pizza][crust_pizza][size_pizza]
+total_harga = pizza["price"]
+if extra_cheese: total_harga += pizza["extra_cheese"]
+
+print("\nTerima Kasih telah membeli Pizza di Pizza Hut")
+print(f"Pesanan Anda Pizza dengan Topping {topping_pizza}")
+print(f"Crust/Pinggiran {crust_pizza}")
+print(f"Ukuran {size_pizza} dan")
+print(f"{'dengan' if extra_cheese else 'tanpa'} Tambahan Keju")
+print(f"Total Harga: Rp {total_harga}")
